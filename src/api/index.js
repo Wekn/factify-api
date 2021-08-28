@@ -1,6 +1,6 @@
 import express from "express";
 import getCategories from "./Category/category.controller.js";
-import getAllUsers from "./user/user.controller.js";
+import getAllUsers, { registerNewUser, getSingleuser } from "./user/user.controller.js";
 const Api = express();
 Api.get("/", (req, res) => {
   res.json({
@@ -9,7 +9,8 @@ Api.get("/", (req, res) => {
   });
 });
 
-Api.get("/categories", getCategories);
-Api.post("/users", getAllUsers);
-
+Api.get("/category", getCategories);
+Api.get("/user", getAllUsers);
+Api.get("/user/:uid", getSingleuser);
+Api.post("/user", registerNewUser);
 export { Api };
